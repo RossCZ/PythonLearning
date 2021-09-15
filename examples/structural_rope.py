@@ -122,7 +122,7 @@ def run_simulation():
 
     anim = FuncAnimation(fig, animate, frames=200, interval=1, blit=True)
     plt.show()
-    # anim.save('animation.gif', fps=30, dpi=200)
+    # anim.save('structural_rope.gif', fps=30, dpi=200)
 
 
 run_simulation()

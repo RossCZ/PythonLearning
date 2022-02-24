@@ -25,7 +25,7 @@ def mandelbrot_example():
     x_start, y_start = -2.0, -1.3
     width, height = 3.0, 2.6
     density = 300
-    threshold = 20  # [4;100]
+    threshold = 20  # [1;n]
 
     # values of real and imaginary axis
     real = np.linspace(x_start, x_start + width, int(width * density))

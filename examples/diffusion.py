@@ -60,6 +60,7 @@ def simulate_diffusion():
 
     anim = FuncAnimation(fig, animate, frames=50, interval=10, blit=True)
     fig.colorbar(simulator.im, fraction=0.03, pad=0.04)
+    plt.tight_layout()
     plt.show()
     # anim.save('diffusion.gif', fps=30, dpi=200)
 

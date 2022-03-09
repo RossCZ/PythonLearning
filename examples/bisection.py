@@ -42,18 +42,22 @@ def visualize_iteration(x_start, x_end, fn1, fn2, iter_x, iter_y):
 
 def bisection_example():
     # define two functions to find intersection
-    fn1 = lambda x: x ** 2
-    fn2 = lambda x: 10 * x + 25
+    fn1 = lambda x: 0.5 * x ** 3 - 8 * x ** 2 - 3 * x + 50 * np.sin(x)
+    fn2 = lambda x: 80 * x - 660
 
     # iteration parameters
-    tol = 1e-3
-    x_start, x_end = -10, 10
+    tol = 1e-4
+    x_start, x_end = 0, 20
     bnd_low, bnd_high = x_start, x_end
     diff = float("inf")
 
     # bisection iteration
     iter_x, iter_y, diffs = [], [], []
+    cnt = 0
     while abs(diff) > tol:
+        cnt += 1
+        if cnt > 50:
+            break
         # calculate x and difference
         x = (bnd_low + bnd_high) / 2
         diff = fn1(x) - fn2(x)

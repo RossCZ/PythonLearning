@@ -94,3 +94,34 @@ plt.clf()
 # showing images (in Numpy.py)
 # 3D, animation, histogram, ...
 # https://matplotlib.org/gallery/index.html
+
+
+def mplt_example():
+    start, stop = -10, 10
+    logscale, annotate = False, False
+
+    logreg = lambda x: 1 / (1 + np.exp(-x))
+    x_list = np.linspace(start, stop, 21)
+    y_list = [logreg(x) for x in x_list]
+
+    plt.plot(x_list, y_list, color="blue", label="logreg", marker="o", markerfacecolor="red", markersize=5)
+    plt.title("Logistic regression")
+    plt.xlabel("x [-]")
+    plt.ylabel("y [-]")
+    plt.xlim(start, stop)
+    plt.xticks(np.arange(min(x_list), max(x_list)+1, 2.0))
+    if logscale:
+        plt.yscale("log")
+    if annotate:
+        ax = plt.gca()
+        for x in x_list:
+            y = logreg(x)
+            ax.annotate(f"{y:.2f}", (x, y))
+    plt.grid()
+    plt.axhline(0.5, color="black", alpha=0.8, linestyle="dashed", linewidth=1.5, label="threshold")
+    plt.legend()
+    plt.tight_layout()
+    plt.show()
+
+
+mplt_example()

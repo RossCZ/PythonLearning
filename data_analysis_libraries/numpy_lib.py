@@ -58,7 +58,7 @@ print(data[1:-1])
 
 # 2D array - image example
 # read image as numpy array
-photo = io.imread("..Data\landscape.jpg")
+photo = io.imread("..\data\landscape.jpg")
 print(type(photo))
 print(photo.shape)
 plt.imshow(photo)
@@ -130,3 +130,18 @@ np.eye(5)
 
 # one hot vector [0, 1, 0, 0, 0]
 np.eye(5)[2]
+
+
+def np_example():
+    size = 6
+    ar = np.ones((size, size)) * np.linspace(1, size, size)
+    ar *= np.transpose(ar)
+    ar[:, 1:3] = -5
+    ar = ar.reshape(-1, 3)
+    plt.imshow(ar)
+    plt.show()
+
+
+np_example()
+
+

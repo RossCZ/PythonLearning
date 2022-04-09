@@ -91,7 +91,18 @@ class Beam():
         plt.title(f"Simple beam {self.name} - internal forces")
         plt.plot(self.internal_V[0], self.internal_V[1], color="blue", label="V [kN]")
         plt.plot(self.internal_M[0], self.internal_M[1], color="red", label="M [kNm]")
-        plt.plot([0, self.length], [0, 0], color="black", label="beam", linewidth=3, marker="^", markersize=15)
+        plt.plot([0, self.length], [0, 0], color="black", label="beam", linewidth=3, marker="o", markersize=8, markerfacecolor="white")
+
+        def add_arrow(x, arrow_size, color, label=""):
+            plt.arrow(x, -arrow_size, 0, arrow_size, color=color, width=0.05, head_length=1.5, length_includes_head=True, label=label)
+
+        arr_scale = 2.0
+        for i, (x, mag) in enumerate(self.forces.items()):
+            add_arrow(x, mag * arr_scale, "green", "forces" if i == 0 else "")
+        R1, R2 = self.calculate_reactions()
+        add_arrow(0, R1 * arr_scale, "orange", "reactions")
+        add_arrow(self.length, R2 * arr_scale, "orange")
+
         plt.xlabel("x [m]")
         plt.ylabel("internal force value")
         plt.legend()

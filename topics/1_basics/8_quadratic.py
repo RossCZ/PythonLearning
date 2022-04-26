@@ -1,5 +1,4 @@
-
-
+# výpočet kvadratické funkce
 a = float(input("Zadej parametr a: "))
 b = float(input("Zadej parametr b: "))
 c = float(input("Zadej parametr c: "))

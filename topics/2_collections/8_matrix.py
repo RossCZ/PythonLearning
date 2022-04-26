@@ -2,8 +2,9 @@ import random
 
 # vygenerujte matici nahodnych cisel o velikosti n (zadane uzivatelem)
 # n-radku, n-sloupcu
+# -> list v listu
 n = int(input("Zadej velikost: "))
-matice = [] # [[]]
+matice = []  # [[]]
 
 for row in range(n):
     radek = []

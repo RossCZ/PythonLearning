@@ -12,10 +12,7 @@ for hodnota in muj_list:
 
 print("zpet v globalni scope")
 
-# pozor, narozdil od jinych programovacich jazyku 
-# je lokalni konstanta viditelna i mimo scope!
+# pozor, narozdíl od jiných programovacích jazyků je lokální konstanta (z for cyklů nebo ifů) viditelná i mimo scope!
 # https://stackoverflow.com/questions/10563613/does-python-officially-support-reusing-a-loop-variable-after-the-loop
-# toto ale neplati pro funkce, viz priste
+# toto ale neplatí pro funkce -> viz LEGB
 print(lokalni_konstanta)
-
-

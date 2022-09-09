@@ -1,3 +1,4 @@
+# function with docstring and type hints
 def function(param1: int, param2: dict[int, int]) -> (str, list[float]):
     """Example function.
 

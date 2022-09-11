@@ -1,9 +1,11 @@
 def list_reference_example():
     def reassign(lst):
+        # mutable type is reassigned (i.e. original value is not changed)
         print("reasign")
         lst = [0, 1]
 
     def append(lst):
+        # mutable type is changed
         print("append")
         lst.append(1)
 

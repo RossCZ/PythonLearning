@@ -16,9 +16,27 @@ print()
 print("Globals:")
 moo(a)
 globals()["moo"].__call__(a)
-print(globals())  # returns dictionary of current global symbol table
+print(globals())  # dictionary of the module namespace (global symbol table)
+print()
 
 # object documentation
 print()
 print("--" * 16)
 print(a.__doc__)
+print()
+
+# globals, locals, vars
+print("Note: locals, vars:")
+print(locals())  # dictionary of the current namespace
+print(vars())  # dictionary of the current namespace
+
+
+class Magic(object):
+    a = "aaa"
+    b = "bbb"
+
+
+mag = Magic()
+vrr = vars(mag)  # dictionary of the argument
+vrr["c"] = "ccc"
+print(mag.c)

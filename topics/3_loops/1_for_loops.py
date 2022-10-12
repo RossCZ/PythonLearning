@@ -15,4 +15,3 @@ print("")
 # range(od, do, krok)
 for cislo in range(3, 15, 2):
     print(cislo)
-

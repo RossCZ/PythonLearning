@@ -45,7 +45,7 @@ print(f"Time (after compilation) = {time_fast} s")  # executed from cache
 print(f"Speedup: {time_py / time_fast:.1f}x")  # once compiled
 
 # vectorization (@vectorize) of scalar computation can be even faster
-# even more speedup is 
+# even more speedup is achieved by parallelization
 
 # Output for matrix size 1e7
 # Time (pure Python): 55.151488065719604 s

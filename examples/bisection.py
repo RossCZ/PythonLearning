@@ -40,7 +40,46 @@ def visualize_iteration(x_start, x_end, fn1, fn2, iter_x, iter_y):
     plt.show()
 
 
-def bisection_example():
+def bisection_example_1():
+    # define a function to find intersection with zero
+    fn = lambda x: 0.5 * x ** 3 - 8 * x ** 2 - 3 * x + 50 * np.sin(x)
+    fn_zero = lambda x: 0   # for visualization
+
+    # iteration parameters
+    tol = 1e-4
+    x_start, x_end = 3, 20
+    bnd_low, bnd_high = x_start, x_end
+    diff = float("inf")
+
+    # bisection iteration
+    iter_x, iter_y, diffs = [], [], []
+    cnt = 0
+    while abs(diff) > tol:
+        cnt += 1
+        if cnt > 50:
+            break
+        # calculate x and difference
+        x = (bnd_low + bnd_high) / 2
+        diff = fn(x)
+
+        # update boundaries
+        if diff < 0:
+            bnd_low = x
+        else:
+            bnd_high = x
+
+        # log values
+        iter_x.append(x)
+        iter_y.append(fn(x))
+        diffs.append(abs(diff))
+        print(f"\tIteration: {len(iter_x)}, x: {x}, diff: {diff}")
+
+    print(f"Bisection finished in {len(iter_x)} steps. The result is: {iter_x[-1]}")
+    visualize_iteration_metrics(iter_x, diffs)
+    visualize_iteration(x_start, x_end, fn, fn_zero, iter_x, iter_y)
+
+
+def bisection_example_2():
     # define two functions to find intersection
     fn1 = lambda x: 0.5 * x ** 3 - 8 * x ** 2 - 3 * x + 50 * np.sin(x)
     fn2 = lambda x: 80 * x - 660
@@ -79,4 +118,5 @@ def bisection_example():
     visualize_iteration(x_start, x_end, fn1, fn2, iter_x, iter_y)
 
 
-bisection_example()
+bisection_example_1()  # one function
+# bisection_example_2()  # two functions

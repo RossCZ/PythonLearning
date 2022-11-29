@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-# Python Data Analysis Library
+# Python Data Analysis Library - basics for time series analysis
 # 0) links
 # https://pandas.pydata.org/
 # https://www.kaggle.com/hershyandrew/amzn-dpz-btc-ntfx-adjusted-may-2013may2019
@@ -44,6 +44,8 @@ df = pd.read_csv("../data/portfolio_data.csv")  # default
 # df.fillna((df.mean()), inplace=True)  # fill column mean (or min, max, ...)
 df.interpolate(method="linear", inplace=True)  # interpolate
 # df["BTC"] = df.apply(lambda row: 6.0 if np.isnan(row["BTC"]) else row["BTC"], axis=1)  # apply lambda function
+
+# df = df.drop_duplicates() # duplicate values
 
 # 6) data modification
 # convert date to datetime object and set as index for further use
@@ -101,19 +103,7 @@ btc_df.to_csv("../data/BTC_data.csv", sep=";", header=True, index=True, decimal=
 # plt.plot(btc_df)
 # plt.show()
 
-# 14) concatenate (all/union)
-# http://queirozf.com/entries/pandas-dataframe-union-and-concat-examples
-# df4 = pd.concat([df2, df3], ignore_index=False).drop_duplicates()
-
-# 15) sort
-# df = df.sort_index()
-# dff = df.sort_values(by="BTC", ascending=False).reset_index()
-
-# 17) other topics
-# groupby (for df with multiple groups (labels, names, ...))
-# multiindex
-
-# note: lambda functions to filter data
+# X) note: lambda functions to filter data
 # btc_df = btc_df[lambda x: x["BTC"] > 1000]
 # btc_df = btc_df[lambda x: x.index > pd.to_datetime("2016-01-01")]
 # btc_df = btc_df[lambda x: np.logical_and(x.index > pd.to_datetime("2016-01-01"), x["BTC"] > 0)]

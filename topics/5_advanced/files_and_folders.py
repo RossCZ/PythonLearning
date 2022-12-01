@@ -1,49 +1,110 @@
 import os
+from pathlib import Path
 import pandas as pd
 
-# https://www.geeksforgeeks.org/os-module-python-examples/
-# join path
-print(os.path.join("Output", "file.txt"))
 
-# path exist
-print(os.path.exists("Data"))
+def os_options():
+    # https://www.geeksforgeeks.org/os-module-python-examples/
+    # join path
+    print(os.path.join("Output", "file.txt"))
 
-# make directory
-# os.mkdir("Output")
+    # path exist
+    print(os.path.exists("Data"))
 
-# Example
-df = pd.read_csv(os.path.join("Data", "portfolio_data.csv"))
-foldername = "Output"
-filename = "BTC_df.csv"
-if not os.path.exists(foldername):
-    os.mkdir(foldername)
-    
-    # Pandas - save series/dataframe to csv
-    df["BTC"].to_csv(os.path.join(foldername, filename), sep=";")
+    # make directory
+    # os.mkdir("Output")
+
+    # other useful options
+    # rename a file
+    # os.rename("old_file.txt", "new_file.txt")
+
+    # remove a file
+    # os.remove("file.txt")
+
+    # remove empty directory
+    # os.rmdir("directory")
 
 
-# other useful options
-# rename a file
-# os.rename("old_file.txt", "new_file.txt")
+def os_example():
+    df = pd.read_csv(os.path.join("../../data", "portfolio_data.csv"))
+    foldername = "output"
+    filename = "BTC_df.csv"
+    if not os.path.exists(foldername):
+        os.mkdir(foldername)
 
-# remove a file
-# os.remove("file.txt")
+        # Pandas - save series/dataframe to csv
+        df["BTC"].to_csv(os.path.join(foldername, filename), sep=";")
 
-# remove empty directory
-# os.rmdir("directory")
 
-# file handling
-# https://www.w3schools.com/python/python_file_open.asp
-# https://www.w3schools.com/python/python_file_write.asp
+def file_handling():
+    # https://www.w3schools.com/python/python_file_open.asp
+    # https://www.w3schools.com/python/python_file_write.asp
 
-# write to a file
-# f = open("my_file.txt", "w")
-# f.write("Hello world")
-# f.close()
+    # create an empty file
+    f = open("my_file.txt", "x")
 
-# open and read a file
-# f = open("my_file.txt", "r")
-# print(f.read()) 
+    # write to a file
+    f = open("my_file.txt", "w")
+    f.write("Hello world")
+    f.close()
 
-# create empty file
-# f = open("my_file.txt", "x")
+    # open and read a file
+    f = open("my_file.txt", "r")
+    print(f.read())
+
+
+def pathlib_options():
+    # path object
+    file = Path("output", "file.txt")  # create path from arbitrary number of components
+    folder = Path("output")
+
+    # file/folder (path) exists
+    print("exists:", file.exists(), folder.exists())
+
+    # create a directory
+    folder.mkdir()
+    # Path("output", "data", "test").mkdir(parents=True, exist_ok=True)  # exist_ok=False: error if the target directory exists
+
+    # create a file
+    with file.open("w") as f:
+        f.write("hello")
+
+    # check type
+    print("is file:", file.is_file(), folder.is_file())
+    print("is dir:", file.is_dir(), folder.is_dir())
+
+    # rename/move a file
+    new_file = Path("output", "my_file.txt")
+    file.rename(new_file)
+
+    # remove a file
+    new_file.unlink()
+
+    # remove an empty directory
+    folder.rmdir()  # or unlink but rmdir is recommended for dirs
+
+
+def pathlib_example():
+    df = pd.read_csv(os.path.join("../../data", "portfolio_data.csv"))
+    outfolder = Path("output")
+    outfile = Path(outfolder, "BTC_df.csv")
+    if not outfolder.exists():
+        outfolder.mkdir()
+
+        # Pandas - save series/dataframe to csv
+        df["BTC"].to_csv(outfile, sep=";")
+
+    # cleanup
+    outfile.unlink()
+    outfolder.rmdir()
+
+
+if __name__ == "__main__":
+    # old
+    # os_options()
+    # os_example()
+    # file_handling()
+
+    # pathlib: modern solution
+    pathlib_options()
+    # pathlib_example()

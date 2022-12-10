@@ -18,4 +18,5 @@ except Exception as e:
 except:
     print("Oh Jeez!")
     print("wrong input")
-
+finally:
+    print("finally...")  # always executed - e.g. close file, DB connection, ...

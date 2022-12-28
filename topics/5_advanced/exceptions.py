@@ -5,9 +5,10 @@ inpt = input("type number: ")
 
 try:
     value = float(inpt)
+    if value < 0:
+        raise ValueError("cislo neni kladne")
     result = value * 2.0
     print(f"{inpt} * 2 = {result}")
-    raise ValueError("cislo neni kladne")
 except ValueError as e:
     print("value error")
     print(e)

@@ -6,6 +6,10 @@ import pandas as pd
 def os_options():
     # https://www.geeksforgeeks.org/os-module-python-examples/
     # join path
+    for root, dirs, files in os.walk(os.getcwd()):  # walk recursively all files/folders in CWD
+        print(root)
+        print(dirs)
+
     print(os.path.join("Output", "file.txt"))
 
     # path exist
@@ -55,6 +59,12 @@ def file_handling():
 
 def pathlib_options():
     # path object
+    cwd = Path.cwd()
+    py_files = cwd.glob("*.py")
+    subfolders = [f for f in cwd.rglob("*") if f.is_dir()]  # rglob: recursively
+    print(f"{len(list(py_files))} python files in CWD")
+    print(f"{len(subfolders)} subfolders in CWD")
+
     file = Path("output", "file.txt")  # create path from arbitrary number of components
     folder = Path("output")
 

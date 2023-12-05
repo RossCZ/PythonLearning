@@ -39,6 +39,7 @@ def bootstrap_example():
     fig.add_vline(x=bootstrapped_mean, line_width=1, line_dash="dash", line_color="black", annotation_text="Bootstrapped mean with 90% confidence intervals")
     fig.add_vline(x=q_05, line_width=1, line_dash="dash", line_color="grey")
     fig.add_vline(x=q_95, line_width=1, line_dash="dash", line_color="grey")
+    # fig.write_html("bootstrap.html")
     fig.show()
 
 

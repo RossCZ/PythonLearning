@@ -104,14 +104,19 @@ class Rope:
         return self.lines,
             
 
-def run_simulation():
-    fig = plt.figure(figsize=[6, 4])
+def run_simulation(settings=None):
+    fig = plt.figure(figsize=[6, 4], dpi=200)
     ax = plt.axes(xlim=(0, 100), ylim=(-70, 0.0))
     # ax.axis('off')
     # points = ax.scatter([], [], color="blue", s=3, edgecolors=None)
     lines, = ax.plot([], [], color="blue", linewidth=1)
 
-    rope = Rope(lines, step=0.001, length=100.0, no_nodes=50, k=5e2, g=-9.81, weight_per_length=1.0, damping=0.4)
+    if settings is None:
+        rope = Rope(lines, step=0.001, length=100.0, no_nodes=50, k=5e2, g=-9.81, weight_per_length=1.0, damping=0.4)
+    else:
+        plt.xlim(0.0, settings["length"])
+        plt.ylim(-settings["length"], 0.0)
+        rope = Rope(lines, **settings)
 
     # Animation
     def animate(i):
@@ -125,4 +130,5 @@ def run_simulation():
     # anim.save('structural_rope.gif', fps=30, dpi=200)
 
 
-run_simulation()
+if __name__ == "__main__":
+    run_simulation()

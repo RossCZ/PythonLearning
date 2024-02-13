@@ -6,9 +6,9 @@ import ctypes
 
 
 # https://www.geeksforgeeks.org/data-types-in-c/
-print("Basic types")
+print("Basic types")  # short-int-long (signed/unsigned), float-double,
 print("int32:", ctypes.sizeof(ctypes.c_int))  # int32: 32-bit: 4 B  (Python int)
-print("float32:", ctypes.sizeof(ctypes.c_float))  # float32: 32-bit: 4 B
+print("float32:", ctypes.sizeof(ctypes.c_float))  # float32: 32-bit: 4 B  (fp32)
 print("float64:", ctypes.sizeof(ctypes.c_double))  # float64: 64-bit: 8 B  (Python float)
 print("Python float (object):", sys.getsizeof(float()))  # 24 B (whole class)
 print()

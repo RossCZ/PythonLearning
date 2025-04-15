@@ -7,10 +7,16 @@ import ctypes
 
 # https://www.geeksforgeeks.org/data-types-in-c/
 print("Basic types")  # short-int-long (signed/unsigned), float-double,
-print("int32:", ctypes.sizeof(ctypes.c_int))  # int32: 32-bit: 4 B  (Python int)
-print("float32:", ctypes.sizeof(ctypes.c_float))  # float32: 32-bit: 4 B  (fp32)
+print("bool:", ctypes.sizeof(ctypes.c_bool))  # 1 B  (Python bool)  # 1 byte is the lowest size since it has to be addressable
+print("char:", ctypes.sizeof(ctypes.c_char))  # 1 B : range 0-255 (e.g. extended ascii, 8-bit color)
+# string -> unicode encoding 1-4 byte: https://cs.wikipedia.org/wiki/UTF-8
+print("int32:", ctypes.sizeof(ctypes.c_int))  # int32: 32-bit: 4 B  (Python int)  # short=2/long=4 (+ signed/unsigned)
+print("float32:", ctypes.sizeof(ctypes.c_float))  # float32: 32-bit: 4 B  (fp32)  # float=4/double=8
 print("float64:", ctypes.sizeof(ctypes.c_double))  # float64: 64-bit: 8 B  (Python float)
 print("Python float (object):", sys.getsizeof(float()))  # 24 B (whole class)
+print()
+
+print(f"uint32 range: {2**32:_}")
 print()
 
 print("Arrays")

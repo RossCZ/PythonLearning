@@ -8,6 +8,7 @@ def systems():
     print(f"decimal: {a}")
     print(f"binary: {bin(a)}")  # 1 * 2^2 + 0 * 2^1 + 1 * 2^0 = 4 + 0 + 1 = 5
     print(f"hexadecimal: {hex(15)}")  # a, b, c, d, e, f (10-15)
+    # print(f"octal: {oct(15)}")
 
     # 2 bits
     # | 0,0 | 0,1 | 1,0 | 1,1 | = 2^2 = 4 combinations
